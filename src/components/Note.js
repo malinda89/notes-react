@@ -3,9 +3,15 @@ import logo from '../logo.svg';
 import '../css/App.css';
 
 class Note extends Component {
+
   render() {
+    const {details} = this.props;
+
     return (
-      //TODO
+      <li>
+        <h3>{details.id}: {details.title}</h3>
+        <p>{details.description}</p>
+      </li>
     );
   }
 }
