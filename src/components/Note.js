@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import logo from '../logo.svg';
-import '../css/App.css';
 
 class Note extends Component {
 
@@ -8,10 +6,7 @@ class Note extends Component {
     const {details} = this.props;
 
     return (
-      <li>
-        <h3>{details.id}: {details.title}</h3>
-        <p>{details.description}</p>
-      </li>
+      <a><div className="bs-callout-info">{details.title}</div></a>
     );
   }
 }

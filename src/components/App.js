@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import logo from '../logo.svg';
-import '../css/App.css';
-import Note from './Note';
+import NoteList from './NoteList';
+import AddNoteForm from './AddNoteForm';
 
 class App extends Component {
   constructor() {
     super();
+
+    this.addNote = this.addNote.bind(this);
 
     // Initial state
     this.state = {
@@ -13,24 +15,26 @@ class App extends Component {
     };
   }
 
+  addNote(newItem) {
+    const updatedList = this.state.notes.concat([newItem]);
+    this.setState({notes: updatedList});
+  }
+
   render() {
     return (
-      <div className="App">
-        
+      <div>
+
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <h2>Notes...</h2>
         </div>
 
-        <div>
-          <p className="App-intro">
-            <h3>Notes</h3>
-            <ul>
-              {
-                this.state.notes.map(note => <Note details={note}/>)
-              }
-            </ul>
-          </p>
+        <div className="col-xs-6">
+          <NoteList list={this.state.notes}/>
+        </div>
+
+        <div className="col-xs-6">
+          <AddNoteForm addNote={this.addNote}/>
         </div>
 
       </div>
