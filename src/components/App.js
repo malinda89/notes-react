@@ -19,7 +19,6 @@ class App extends Component {
   addNote(newItem) {
     const updatedList = this.state.notes.concat([newItem]);
     this.setState({notes: updatedList});
-    showForm();
   }
 
   showForm() {
