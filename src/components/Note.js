@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import DisplayContainer from './DisplayContainer';
+
 
 class Note extends Component {
+
+  displayNote(e) {
+    e.preventDefault();
+    ReactDOM.render(<DisplayContainer details={this.props.details}/>, document.getElementById('note_container'));
+  }
 
   render() {
     const {details} = this.props;
 
     return (
-      <a><div className="bs-callout-info">{details.title}</div></a>
+      <a href="#" onClick={(e) => this.displayNote(e)}><div className="bs-callout-info">{details.title}</div></a>
     );
   }
 }

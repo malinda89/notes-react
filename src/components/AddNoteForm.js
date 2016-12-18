@@ -27,7 +27,9 @@ class AddNoteForm extends React.Component {
             <label>Description</label>
             <input ref={(input) => this.description = input} type="text" className="form-control" placeholder="Description"/>
           </div>
-          <button className="pull-right btn btn-success" type="submit">Add Note</button>
+          <div>
+            <button className="pull-right btn btn-success" type="submit">Add Note</button>
+          </div>
         </form> 
       </div>
     )
