@@ -11,13 +11,19 @@ class App extends Component {
 
     // Initial state
     this.state = {
-      notes: JSON.parse(localStorage.notes || "{}")
+      notes: JSON.parse(localStorage.notes || "{}"),
+      showAddform: false
     };
   }
 
   addNote(newItem) {
     const updatedList = this.state.notes.concat([newItem]);
     this.setState({notes: updatedList});
+    showForm();
+  }
+
+  showForm() {
+    this.setState({showAddform: !this.state.showAddform});
   }
 
   render() {
@@ -26,7 +32,7 @@ class App extends Component {
 
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Notes...</h2>
+          <button className="btn btn-success" onClick={this.showForm.bind(this)}>Create new note</button>
         </div>
 
         <div className="col-xs-6">
@@ -34,7 +40,7 @@ class App extends Component {
         </div>
 
         <div className="col-xs-6">
-          <AddNoteForm addNote={this.addNote}/>
+          {this.state.showAddform && <AddNoteForm addNote={this.addNote}/>}
         </div>
 
       </div>
