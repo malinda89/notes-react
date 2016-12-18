@@ -8,6 +8,7 @@ class App extends Component {
     super();
 
     this.addNote = this.addNote.bind(this);
+    this.showForm = this.showForm.bind(this);
 
     // Initial state
     this.state = {
@@ -19,6 +20,7 @@ class App extends Component {
   addNote(newItem) {
     const updatedList = this.state.notes.concat([newItem]);
     this.setState({notes: updatedList});
+    this.showForm();
   }
 
   showForm() {
@@ -31,7 +33,7 @@ class App extends Component {
 
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <button className="btn btn-success" onClick={this.showForm.bind(this)}>Create new note</button>
+          <button className="btn btn-success" onClick={this.showForm}>Create new note</button>
         </div>
 
         <div className="col-xs-6">
