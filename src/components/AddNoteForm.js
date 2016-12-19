@@ -5,9 +5,18 @@ class AddNoteForm extends React.Component {
     e.preventDefault();
 
     const note = {
+      id: Date.now(),
       title: this.title.value,
       description: this.description.value
     }
+
+    const list = localStorage.notes ? JSON.parse(localStorage.notes) : [];
+
+    // Add new item to temp list
+    list.push(note);
+
+    // Update localstorage
+    localStorage.notes = JSON.stringify(list);
 
     this.props.addNote(note);
     

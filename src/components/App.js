@@ -12,12 +12,12 @@ class App extends Component {
 
     // Initial state
     this.state = {
-      notes: JSON.parse(localStorage.notes || "{}"),
+      notes: localStorage.notes ? JSON.parse(localStorage.notes) : [],
       showAddform: false,
     };
   }
 
-  // add new item to list
+  // Add new item to list
   addNote(newItem) {
     const updatedList = this.state.notes.concat([newItem]);
     this.setState({notes: updatedList});
@@ -63,6 +63,7 @@ class App extends Component {
   }
 }
 
+// Make router context available
 App.contextTypes = {
   router: React.PropTypes.object
 }
