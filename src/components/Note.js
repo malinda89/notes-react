@@ -7,6 +7,8 @@ class Note extends Component {
 
   displayNote(e) {
     e.preventDefault();
+
+    // Render note content when clicked on a note
     ReactDOM.render(<DisplayContainer details={this.props.details}/>, document.getElementById('note_container'));
   }
 

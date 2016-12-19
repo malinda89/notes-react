@@ -17,14 +17,22 @@ class App extends Component {
     };
   }
 
+  // add new item to list
   addNote(newItem) {
     const updatedList = this.state.notes.concat([newItem]);
     this.setState({notes: updatedList});
     this.updateFormVisibility();
   }
 
+  // Toggle 'Add note form' visibility
   updateFormVisibility() {
     this.setState({showAddform: !this.state.showAddform});
+  }
+
+  // Navigate to a given path
+  goTo(e, path) {
+    e.preventDefault();
+    this.context.router.transitionTo(`/${path}`);
   }
 
   render() {
@@ -33,7 +41,12 @@ class App extends Component {
 
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
+          
           <button className="btn btn-success" onClick={this.updateFormVisibility}>Create new note</button>
+          
+          <div>
+            <a href="#" onClick={(e) => this.goTo(e, "contact")}><h3>Contact Us!</h3></a>
+          </div>
         </div>
 
         <div className="col-md-6 col-xs-12">
@@ -48,6 +61,10 @@ class App extends Component {
       </div>
     )
   }
+}
+
+App.contextTypes = {
+  router: React.PropTypes.object
 }
 
 export default App;
